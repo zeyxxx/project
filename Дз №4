@@ -1,0 +1,49 @@
+# Курсы валют относительно сома
+rates = {
+    "KGS": 1,
+    "USD": 89,
+    "EUR": 96,
+    "RUB": 1.2
+}
+
+
+class Money:
+
+    def __init__(self, amount, currency):
+        self.amount = amount
+        self.currency = currency
+
+    # перевод в сомы
+    def convert_to_kgs(self):
+        return self.amount * rates[self.currency]
+
+    # сложение
+    def __add__(self, other):
+        total_kgs = self.convert_to_kgs() + other.convert_to_kgs()
+        return Money(total_kgs, "KGS")
+
+    # вычитание
+    def __sub__(self, other):
+        total_kgs = self.convert_to_kgs() - other.convert_to_kgs()
+        return Money(total_kgs, "KGS")
+
+    # умножение на число
+    def __mul__(self, number):
+        return Money(self.amount * number, self.currency)
+
+    # деление на число
+    def __truediv__(self, number):
+        return Money(self.amount / number, self.currency)
+
+    # красивый вывод
+    def __str__(self):
+        return f"{self.amount} {self.currency}"
+
+
+# Пример использования
+money1 = Money(10000, "USD")
+money2 = Money(500000, "KGS")
+
+result = money1 + money2
+
+print(result)
