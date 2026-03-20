@@ -1,0 +1,29 @@
+from colorama import Fore, Style, init
+import time
+
+# Эта библиотека нужна для изменения цвета текста в консоли
+# Она используется, чтобы делать вывод более наглядным и удобным
+
+init()
+
+# 📌 Часть 2 — Two Sum
+def two_sum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+
+
+# 📌 Проверка алгоритма
+nums = [2, 7, 11, 15]
+target = 9
+
+result = two_sum(nums, target)
+
+print(Fore.GREEN + f"Результат Two Sum: {result}")
+print(Style.RESET_ALL)
+
+
+# 📌 Дополнительно (пример использования colorama)
+print(Fore.BLUE + "Программа успешно завершена")
+print(Style.RESET_ALL)
